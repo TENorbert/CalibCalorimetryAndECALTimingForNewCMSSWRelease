@@ -9,6 +9,7 @@
 <use   name="CondFormats/DataRecord"/>
 <use   name="RecoLocalCalo/EcalRecAlgos"/>
 <use   name="RecoEcal/EgammaCoreTools"/>
+<use   name="RecoEcal/EgammaClusterProducers"/>
 <use   name="Geometry/EcalMapping"/>
 <use   name="Geometry/CaloGeometry"/>
 <use   name="DataFormats/PatCandidates"/>

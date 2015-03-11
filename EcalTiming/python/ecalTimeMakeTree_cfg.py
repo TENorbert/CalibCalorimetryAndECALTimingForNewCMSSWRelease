@@ -17,7 +17,8 @@ process.load("Geometry.MuonNumbering.muonNumberingInitialization_cfi") # gfwork:
 # Global Tag
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
 #process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_noesprefer_cff")
-process.GlobalTag.globaltag = 'GR_R_35X_V8A::All'
+#process.GlobalTag.globaltag = 'GR_R_35X_V8A::All'
+process.GlobalTag.globaltag = 'GR_P_V43::All'
 
 
 # Trigger
@@ -36,9 +37,11 @@ process.gtDigis = EventFilter.L1GlobalTriggerRawToDigi.l1GtUnpack_cfi.l1GtUnpack
 
 # general basic- and super- clustering sequences
 import RecoEcal.EgammaClusterProducers.multi5x5ClusteringSequence_cff
+import RecoEcal.EgammaClusterProducers.multi5x5BasicClusters_cfi
 
 # 3x3 clustering for barrel
-process.multi5x5BasicClustersTimePi0Barrel =  RecoEcal.EgammaClusterProducers.multi5x5BasicClusters_cfi.multi5x5BasicClusters.clone(
+#process.multi5x5BasicClustersTimePi0Barrel =  RecoEcal.EgammaClusterProducers.multi5x5BasicClusters_cfi.multi5x5BasicClusters.clone(
+process.multi5x5BasicClustersTimePi0Barrel =  RecoEcal.EgammaClusterProducers.multi5x5BasicClusters_cfi.multi5x5BasicClustersCleaned.clone(
     # which regions should be clusterized
     doEndcap = cms.bool(False),
     doBarrel = cms.bool(True),
@@ -62,7 +65,8 @@ process.multi5x5BasicClustersTimePi0Barrel =  RecoEcal.EgammaClusterProducers.mu
 
 
 # 3x3 clustering for endcap
-process.multi5x5BasicClustersTimePi0Endcap =  RecoEcal.EgammaClusterProducers.multi5x5BasicClusters_cfi.multi5x5BasicClusters.clone(
+#process.multi5x5BasicClustersTimePi0Endcap =  RecoEcal.EgammaClusterProducers.multi5x5BasicClusters_cfi.multi5x5BasicClusters.clone(
+process.multi5x5BasicClustersTimePi0Endcap =  RecoEcal.EgammaClusterProducers.multi5x5BasicClusters_cfi.multi5x5BasicClustersCleaned.clone(
     # which regions should be clusterized
     doEndcap = cms.bool(True),
     doBarrel = cms.bool(False),
@@ -85,7 +89,8 @@ process.multi5x5BasicClustersTimePi0Endcap =  RecoEcal.EgammaClusterProducers.mu
 
 
 # super clustering for the ECAL BARREL, staring from multi5x5 3x3 clusters
-process.multi5x5SuperClustersTimePi0Barrel =  RecoEcal.EgammaClusterProducers.multi5x5SuperClusters_cfi.multi5x5SuperClusters.clone(
+#process.multi5x5SuperClustersTimePi0Barrel =  RecoEcal.EgammaClusterProducers.multi5x5SuperClusters_cfi.multi5x5SuperClusters.clone(
+process.multi5x5SuperClustersTimePi0Barrel =  RecoEcal.EgammaClusterProducers.multi5x5SuperClusters_cfi.multi5x5SuperClustersCleaned.clone(
     doBarrel = cms.bool(True),
     doEndcaps = cms.bool(False),
     barrelClusterProducer = cms.string('multi5x5BasicClustersTimePi0Barrel'),
@@ -96,7 +101,8 @@ process.multi5x5SuperClustersTimePi0Barrel =  RecoEcal.EgammaClusterProducers.mu
 
 
 # super clustering for the ECAL ENDCAP, staring from multi5x5 3x3 clusters
-process.multi5x5SuperClustersTimePi0Endcap =  RecoEcal.EgammaClusterProducers.multi5x5SuperClusters_cfi.multi5x5SuperClusters.clone(
+#process.multi5x5SuperClustersTimePi0Endcap =  RecoEcal.EgammaClusterProducers.multi5x5SuperClusters_cfi.multi5x5SuperClusters.clone(
+process.multi5x5SuperClustersTimePi0Endcap =  RecoEcal.EgammaClusterProducers.multi5x5SuperClusters_cfi.multi5x5SuperClustersCleaned.clone(
     doBarrel = cms.bool(False),
     doEndcaps = cms.bool(True),
     barrelClusterProducer = cms.string('multi5x5BasicClustersTimePi0Barrel'),
